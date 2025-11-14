@@ -8,11 +8,16 @@ body {
   background: lightblue;
   max-width: 1200px;
   margin: 0 auto;
-  background: black;
+  background: white;
 }
 
 h2 {
   text-align: center;
+}
+
+li {
+  list-style: none;
+  font-size: 1.5rem;
 }
 
 .game-grid {
@@ -49,16 +54,40 @@ h2 {
 .user-selection {
   grid-area: usr;
   background: lightpink;
-  min-height: 50vh;
+  height: 50vh;
+  position: relative;
+  left: 10%;
 }
 
 .comp-selection {
   grid-area: cmp;
   background: lightgreen;
+  position: relative;
+  right: 10%;
 }
 
 .score-card {
   grid-area: scr;
   background: lightseagreen;
-  min-height: 25vh;
+  padding: 2%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 600px) {
+  .game-grid {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-areas:
+      'btn btn btn btn btn btn btn'
+      'btn btn btn btn btn btn btn'
+      'usr usr usr . cmp cmp cmp'
+      'usr usr usr . cmp cmp cmp'
+      'usr usr usr . cmp cmp cmp'
+      '. . scr scr scr . .'
+      '. . scr scr scr . .';
+  }
+  .user-buttons {
+    width: 100vw;
+  }
 }
