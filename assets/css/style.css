@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: lightblue;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: black;
+}
+
+h2 {
+  text-align: center;
+}
+
+.game-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    '. . btn btn btn . .'
+    '. . btn btn btn . .'
+    'usr usr usr . cmp cmp cmp'
+    'usr usr usr . cmp cmp cmp'
+    'usr usr usr . cmp cmp cmp'
+    '. . scr scr scr . .'
+    '. . scr scr scr . .';
+}
+
+/* TODO: Figure out sizing */
+
+.user-buttons {
+  background: lightcoral;
+  grid-area: btn;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 20vh;
+}
+
+#rock-button,
+#paper-button,
+#scissors-button {
+  width: 20%;
+  height: 50%;
+}
+
+.user-selection {
+  grid-area: usr;
+  background: lightpink;
+  min-height: 50vh;
+}
+
+.comp-selection {
+  grid-area: cmp;
+  background: lightgreen;
+}
+
+.score-card {
+  grid-area: scr;
+  background: lightseagreen;
+  min-height: 25vh;
+}
