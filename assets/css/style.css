@@ -32,7 +32,6 @@ li {
 /* TODO: Figure out ideal sizing for buttons */
 /* TODO: FIX: Images shrink faster than their containers */
 .user-buttons {
-  background: lightblue;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -75,16 +74,17 @@ li {
   gap: 5rem;
   position: relative;
   top: 25px;
+  height: 50vh;
 }
 
 .user-selection {
   background: lightpink;
-  height: 50vh;
+  width: min(500px, 50vw);
 }
 
 .comp-selection {
   background: lightgreen;
-  height: 50vh;
+  width: min(500px, 50vw);
 }
 
 #user-selection-image,
