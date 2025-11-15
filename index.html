@@ -7,15 +7,13 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <div class="game-grid">
-      <div class="user-buttons">
-        <button id="rock-button"></button>
-        <button id="paper-button"></button>
-        <button id="scissors-button"></button>
-      </div>
-
+    <div class="user-buttons">
+      <button id="rock-button"></button>
+      <button id="paper-button"></button>
+      <button id="scissors-button"></button>
+    </div>
+    <div class="choices-body">
       <div class="user-selection">
-        <h2>YOU</h2>
         <div id="user-selection-image">
           <img
             src="assets/images/rock-paper-scissors.png"
@@ -24,7 +22,6 @@
         </div>
       </div>
       <div class="comp-selection">
-        <h2>COMP</h2>
         <div id="comp-selection-image">
           <img
             src="assets/images/rock-paper-scissors.png"
@@ -32,19 +29,20 @@
           />
         </div>
       </div>
-
-      <div class="score-card">
-        <ul>
-          <li>Wins:</li>
-          <li>Losses:</li>
-          <li>Ties:</li>
-        </ul>
-        <ul>
-          <li id="wins">0</li>
-          <li id="losses">0</li>
-          <li id="ties">0</li>
-        </ul>
-      </div>
+    </div>
+    <div class="score-cards">
+      <ul>
+        <li>YOU</li>
+        <li id="user-score">0</li>
+      </ul>
+      <ul class="play-counter-card">
+        <li>PLAYS</li>
+        <li id="plays">0</li>
+      </ul>
+      <ul>
+        <li>CPU</li>
+        <li id="computer-score">0</li>
+      </ul>
     </div>
 
     <script src="assets/js/script.js"></script>
