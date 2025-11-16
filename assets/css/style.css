@@ -9,6 +9,8 @@
   src: url(../fonts/wwDigital.ttf);
 }
 
+/* TODO: Add responsive design */
+
 body {
   max-width: 1200px;
   margin: 0 auto;
@@ -29,7 +31,6 @@ li {
   font-size: 2rem;
 }
 
-/* TODO: Figure out ideal sizing for buttons */
 /* TODO: FIX: Images shrink faster than their containers */
 .user-buttons {
   display: flex;
@@ -196,6 +197,7 @@ li {
 
 .score-cards ul {
   background: black;
+  /* ? Size not changing when above 100px??? */
   width: 30%;
   display: flex;
   flex-direction: column;

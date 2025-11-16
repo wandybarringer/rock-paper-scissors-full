@@ -23,25 +23,39 @@ function generateCpuChoice() {
 
 // TODO: When clicked - add rock image to cpuImgEl ✅
 function recordCpuChoice() {
-  if (cpuChoice == 'rock') {
+  if (cpuChoice === 'rock') {
     cpuImg = document.createElement('img');
     cpuImg.src = 'assets/images/rock-cpu.png';
     cpuImg.alt = 'CPU chose rock';
-  } else if (cpuChoice == 'paper') {
+  } else if (cpuChoice === 'paper') {
     cpuImg = document.createElement('img');
     cpuImg.src = 'assets/images/paper-cpu.png';
     cpuImg.alt = 'CPU chose paper';
-    cpuImgEl.append(cpuImg);
-    cpuWins++;
-  } else {
+  } else if (cpuChoice === 'scissors') {
     cpuImg = document.createElement('img');
     cpuImg.src = 'assets/images/scissors-cpu.png';
     cpuImg.alt = 'CPU chose scissors';
-    userWins++;
   }
   cpuImg.style.width = '80%';
   cpuImg.style.height = '80%';
   cpuImgEl.append(cpuImg);
+}
+
+// ? Still not calculating wins correctly
+function determineResults() {
+  if (
+    (userChoice === 'rock' && cpuChoice === 'paper') ||
+    (userChoice === 'paper' && cpuChoice === 'scissors') ||
+    (userChoice === 'scissors' && cpuChoice === 'rock')
+  ) {
+    cpuWins++;
+  } else if (
+    (userChoice === 'paper' && cpuChoice === 'rock') ||
+    (userChoice === 'rock' && cpuChoice === 'scissors') ||
+    (userChoice === 'scissors' && cpuChoice === 'paper')
+  ) {
+    userWins++;
+  } else return;
 }
 
 // TODO: When clicked - append wins, losses and plays to score board ✅
@@ -78,6 +92,7 @@ rockBtnEl.addEventListener('click', function () {
 
   userChoice = 'rock';
   cpuChoice = generateCpuChoice();
+  determineResults();
   recordCpuChoice();
   appendUserChoice();
   appendScore();
@@ -92,7 +107,7 @@ rockBtnEl.addEventListener('click', function () {
   }, 1000);
 });
 
-// TODO: Copy logic to these event listeners below
+// TODO: Copy logic to these event listeners below ✅
 
 paperBtnEl.addEventListener('click', function () {
   plays++;
@@ -105,9 +120,13 @@ paperBtnEl.addEventListener('click', function () {
 
   userChoice = 'paper';
   cpuChoice = generateCpuChoice();
+  determineResults();
   recordCpuChoice();
   appendUserChoice();
   appendScore();
+
+  console.log(userChoice);
+  console.log(cpuChoice);
 
   var timeout = setTimeout(function () {
     userImgEl.removeChild(userImg);
@@ -129,6 +148,7 @@ scissorsBtnEl.addEventListener('click', function () {
 
   userChoice = 'scissors';
   cpuChoice = generateCpuChoice();
+  determineResults();
   recordCpuChoice();
   appendUserChoice();
   appendScore();
