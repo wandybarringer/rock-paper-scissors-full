@@ -12,7 +12,7 @@
 body {
   max-width: 1200px;
   margin: 0 auto;
-  background: white;
+  background: #f9f9f9;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,30 +42,37 @@ li {
 #rock-button,
 #paper-button,
 #scissors-button {
+  all: unset;
   width: 8rem;
   height: 8rem;
   border-radius: 50%;
   cursor: pointer;
-  border: 2px solid black;
 }
 
 #rock-button {
-  background-image: url(../images/rock.png);
+  background-image: url(../images/rock-cpu.png);
   background-repeat: no-repeat;
-  background-size: 90%;
+  background-size: 80%;
   background-position: center center;
 }
 #paper-button {
-  background-image: url(../images/paper.png);
+  background-image: url(../images/paper-user.png);
   background-repeat: no-repeat;
-  background-size: 90%;
+  background-size: 80%;
   background-position: center center;
 }
 #scissors-button {
-  background-image: url(../images/scissors.png);
+  background-image: url(../images/scissors-user.png);
   background-repeat: no-repeat;
-  background-size: 90%;
+  background-size: 80%;
   background-position: center center;
+}
+
+#rock-button:hover,
+#paper-button:hover,
+#scissors-button:hover {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
+  background-size: 85%;
 }
 
 .choices-body {
@@ -78,13 +85,88 @@ li {
 }
 
 .user-selection {
-  background: lightpink;
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
+    -10px -10px 10px white inset;
   width: min(500px, 50vw);
+  border-radius: 20px;
 }
 
 .comp-selection {
-  background: lightgreen;
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
   width: min(500px, 50vw);
+  border-radius: 20px;
+}
+.user-selection-r-win {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+
+.comp-selection-r-win {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+.user-selection-p-win {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+
+.comp-selection-p-win {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+.user-selection-s-win {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+
+.comp-selection-s-win {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+.user-selection-r-lose {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
+    -10px -10px 10px white inset;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+
+.comp-selection-r-lose {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
+    -10px -10px 10px white inset;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+.user-selection-p-lose {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
+    -10px -10px 10px white inset;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+
+.comp-selection-p-lose {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
+    -10px -10px 10px white inset;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+.user-selection-s-lose {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
+    -10px -10px 10px white inset;
+  width: min(500px, 50vw);
+  border-radius: 20px;
+}
+
+.comp-selection-s-lose {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
+    -10px -10px 10px white inset;
+  width: min(500px, 50vw);
+  border-radius: 20px;
 }
 
 #user-selection-image,
@@ -121,6 +203,7 @@ li {
   align-items: center;
   color: red;
   border-radius: 10px;
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3), -10px -10px 10px white;
 }
 
 .play-counter-card {

@@ -1,64 +1,66 @@
 var wins = 0;
 var losses = 0;
-var ties = 0;
-
-// TODO: Get rid of alert functions and instead append to appropriate elements
+var plays = 0;
 
 function play() {
-  var options = ['r', 'p', 's'];
-  var userChoice = prompt('Choose r, p, or s');
-  console.log(userChoice);
-  alert(`You picked '${userChoice}'`);
-  userChoice = userChoice.toLowerCase();
-  if (userChoice === '') {
-    alert('Please pick something');
-    play();
+  var rockBtnEl = document.querySelector('#rock-button');
+  var paperBtnEl = document.querySelector('#paper-button');
+  var scissorsBtnEl = document.querySelector('#scissors-button');
+  var userImgEl = document.querySelector('#user-selection-image');
+  var cpuImgEl = document.querySelector('#comp-selection-image');
+  var userChoice;
+  function generateCpuChoice() {
+    var cpuOptions = ['rock', 'paper', 'scissors'];
+    var index = Math.floor(Math.random() * cpuOptions.length);
+    return cpuOptions[index];
   }
 
-  if (!options.includes(userChoice)) {
-    alert('Must pick r, p, or s!');
-    play();
-  }
+  // TODO: When clicked - add rock image to cpuImgEl
+  // TODO: When clicked - determine outcome and save to wins and losses
 
-  if (!userChoice) {
-    return;
-  }
+  rockBtnEl.addEventListener('click', function () {
+    plays++;
 
-  var compChoice = options[index];
-  console.log(compChoice);
+    // EDGE CASE: User clicks other buttons rapidly
+    paperBtnEl.disabled = true;
+    scissorsBtnEl.disabled = true;
+    userChoice = 'rock';
 
-  if (
-    (userChoice === 'r' && compChoice === 's') ||
-    (userChoice === 's' && compChoice === 'p') ||
-    (userChoice === 'p' && compChoice === 'r')
-  ) {
-    console.log('Win');
-    alert('You won! 😊');
+    var cpuChoice = generateCpuChoice();
+    // Create el, add content/style, append
+    var userRockImg = document.createElement('img');
+    userRockImg.src = 'assets/images/rock-user.png';
+    userRockImg.alt = 'User chose rock';
+    userRockImg.style.width = '80%';
+    userRockImg.style.height = '80%';
+    userImgEl.append(userRockImg);
+    // Remove img after so many seconds
+    setTimeout(function () {
+      userImgEl.removeChild(userRockImg);
+    }, 4000);
+  });
 
-    wins++;
-    console.log(wins);
-  } else if (
-    (userChoice === 's' && compChoice === 'r') ||
-    (userChoice === 'p' && compChoice === 's') ||
-    (userChoice === 'r' && compChoice === 'p')
-  ) {
-    console.log('Loss');
-    alert('You lost! 😢');
-    losses++;
-    console.log(losses);
-  } else {
-    console.log('Tie');
-    alert('It was a tie. 😐');
-    ties++;
-    console.log(ties);
-  }
-  window.alert(`Wins:${wins} \nLosses:${losses} \nTies${ties}`);
+  // TODO: Copy logic to these event listeners below
 
-  var playAgainMsg = confirm('Would you like to play again?');
+  paperBtnEl.addEventListener('click', function () {
+    userChoice = 'paper';
+    var userPaperImg = document.createElement('img');
+    userPaperImg.src = 'assets/images/paper-user.png';
+    userPaperImg.alt = 'User chose paper';
+    userPaperImg.style.width = '80%';
+    userPaperImg.style.height = '80%';
+    userImgEl.append(userPaperImg);
+  });
 
-  if (playAgainMsg) {
-    play();
-  }
+  scissorsBtnEl.addEventListener('click', function () {
+    userChoice = 'scissors';
+    var userScissorsImg = document.createElement('img');
+    userScissorsImg.src = 'assets/images/scissors-user.png';
+    userScissorsImg.alt = 'User chose scissors';
+    userScissorsImg.style.width = '80%';
+    userScissorsImg.style.height = '80%';
+    userImgEl.append(userScissorsImg);
+  });
 }
 
-// play();
+play();
