@@ -1,66 +1,143 @@
-var wins = 0;
-var losses = 0;
+var userWins = 0;
+var cpuWins = 0;
 var plays = 0;
 
-function play() {
-  var rockBtnEl = document.querySelector('#rock-button');
-  var paperBtnEl = document.querySelector('#paper-button');
-  var scissorsBtnEl = document.querySelector('#scissors-button');
-  var userImgEl = document.querySelector('#user-selection-image');
-  var cpuImgEl = document.querySelector('#comp-selection-image');
-  var userChoice;
-  function generateCpuChoice() {
-    var cpuOptions = ['rock', 'paper', 'scissors'];
-    var index = Math.floor(Math.random() * cpuOptions.length);
-    return cpuOptions[index];
-  }
+var rockBtnEl = document.querySelector('#rock-button');
+var paperBtnEl = document.querySelector('#paper-button');
+var scissorsBtnEl = document.querySelector('#scissors-button');
+var userImgEl = document.querySelector('#user-selection-image');
+var cpuImgEl = document.querySelector('#comp-selection-image');
+var userScoreEl = document.querySelector('#user-score');
+var cpuScoreEl = document.querySelector('#computer-score');
+var playsEl = document.querySelector('#plays');
+var userChoice;
+var cpuChoice;
+var cpuImg;
+var userImg;
 
-  // TODO: When clicked - add rock image to cpuImgEl
-  // TODO: When clicked - determine outcome and save to wins and losses
-
-  rockBtnEl.addEventListener('click', function () {
-    plays++;
-
-    // EDGE CASE: User clicks other buttons rapidly
-    paperBtnEl.disabled = true;
-    scissorsBtnEl.disabled = true;
-    userChoice = 'rock';
-
-    var cpuChoice = generateCpuChoice();
-    // Create el, add content/style, append
-    var userRockImg = document.createElement('img');
-    userRockImg.src = 'assets/images/rock-user.png';
-    userRockImg.alt = 'User chose rock';
-    userRockImg.style.width = '80%';
-    userRockImg.style.height = '80%';
-    userImgEl.append(userRockImg);
-    // Remove img after so many seconds
-    setTimeout(function () {
-      userImgEl.removeChild(userRockImg);
-    }, 4000);
-  });
-
-  // TODO: Copy logic to these event listeners below
-
-  paperBtnEl.addEventListener('click', function () {
-    userChoice = 'paper';
-    var userPaperImg = document.createElement('img');
-    userPaperImg.src = 'assets/images/paper-user.png';
-    userPaperImg.alt = 'User chose paper';
-    userPaperImg.style.width = '80%';
-    userPaperImg.style.height = '80%';
-    userImgEl.append(userPaperImg);
-  });
-
-  scissorsBtnEl.addEventListener('click', function () {
-    userChoice = 'scissors';
-    var userScissorsImg = document.createElement('img');
-    userScissorsImg.src = 'assets/images/scissors-user.png';
-    userScissorsImg.alt = 'User chose scissors';
-    userScissorsImg.style.width = '80%';
-    userScissorsImg.style.height = '80%';
-    userImgEl.append(userScissorsImg);
-  });
+function generateCpuChoice() {
+  var cpuOptions = ['rock', 'paper', 'scissors'];
+  var index = Math.floor(Math.random() * cpuOptions.length);
+  return cpuOptions[index];
 }
 
-play();
+// TODO: When clicked - add rock image to cpuImgEl ✅
+function recordCpuChoice() {
+  if (cpuChoice == 'rock') {
+    cpuImg = document.createElement('img');
+    cpuImg.src = 'assets/images/rock-cpu.png';
+    cpuImg.alt = 'CPU chose rock';
+  } else if (cpuChoice == 'paper') {
+    cpuImg = document.createElement('img');
+    cpuImg.src = 'assets/images/paper-cpu.png';
+    cpuImg.alt = 'CPU chose paper';
+    cpuImgEl.append(cpuImg);
+    cpuWins++;
+  } else {
+    cpuImg = document.createElement('img');
+    cpuImg.src = 'assets/images/scissors-cpu.png';
+    cpuImg.alt = 'CPU chose scissors';
+    userWins++;
+  }
+  cpuImg.style.width = '80%';
+  cpuImg.style.height = '80%';
+  cpuImgEl.append(cpuImg);
+}
+
+// TODO: When clicked - append wins, losses and plays to score board ✅
+function appendScore() {
+  userWins.toString;
+  userScoreEl.textContent = userWins;
+
+  cpuWins.toString;
+  cpuScoreEl.textContent = cpuWins;
+}
+
+// Create el, add content/style, append
+function appendUserChoice() {
+  userImg = document.createElement('img');
+  userImg.src = `assets/images/${userChoice}-user.png`;
+  userImg.alt = `User chose ${userChoice}`;
+  userImg.style.width = '80%';
+  userImg.style.height = '80%';
+  userImgEl.append(userImg);
+}
+
+// TODO: When clicked - change style of selection containers
+// TODO: When clicked - 1 sec visual of both selection containers cycling through the 3 options (FINAL TOUCHES)
+
+rockBtnEl.addEventListener('click', function () {
+  // Increasing plays per click
+  plays++;
+  plays.toString;
+  playsEl.textContent = plays;
+  // EDGE CASE: User clicks other buttons rapidly
+  rockBtnEl.disabled = true;
+  paperBtnEl.disabled = true;
+  scissorsBtnEl.disabled = true;
+
+  userChoice = 'rock';
+  cpuChoice = generateCpuChoice();
+  recordCpuChoice();
+  appendUserChoice();
+  appendScore();
+
+  // Remove img enable buttons after so many seconds
+  var timeout = setTimeout(function () {
+    userImgEl.removeChild(userImg);
+    cpuImgEl.removeChild(cpuImg);
+    rockBtnEl.disabled = false;
+    paperBtnEl.disabled = false;
+    scissorsBtnEl.disabled = false;
+  }, 1000);
+});
+
+// TODO: Copy logic to these event listeners below
+
+paperBtnEl.addEventListener('click', function () {
+  plays++;
+  plays.toString;
+  playsEl.textContent = plays;
+
+  rockBtnEl.disabled = true;
+  paperBtnEl.disabled = true;
+  scissorsBtnEl.disabled = true;
+
+  userChoice = 'paper';
+  cpuChoice = generateCpuChoice();
+  recordCpuChoice();
+  appendUserChoice();
+  appendScore();
+
+  var timeout = setTimeout(function () {
+    userImgEl.removeChild(userImg);
+    cpuImgEl.removeChild(cpuImg);
+    rockBtnEl.disabled = false;
+    paperBtnEl.disabled = false;
+    scissorsBtnEl.disabled = false;
+  }, 1000);
+});
+
+scissorsBtnEl.addEventListener('click', function () {
+  plays++;
+  plays.toString;
+  playsEl.textContent = plays;
+
+  rockBtnEl.disabled = true;
+  paperBtnEl.disabled = true;
+  scissorsBtnEl.disabled = true;
+
+  userChoice = 'scissors';
+  cpuChoice = generateCpuChoice();
+  recordCpuChoice();
+  appendUserChoice();
+  appendScore();
+
+  var timeout = setTimeout(function () {
+    userImgEl.removeChild(userImg);
+    cpuImgEl.removeChild(cpuImg);
+    rockBtnEl.disabled = false;
+    paperBtnEl.disabled = false;
+    scissorsBtnEl.disabled = false;
+  }, 1000);
+});
