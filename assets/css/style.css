@@ -48,32 +48,28 @@ li {
   height: 8rem;
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
+  background-size: 85%;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 #rock-button {
   background-image: url(../images/rock-cpu.png);
-  background-repeat: no-repeat;
-  background-size: 80%;
-  background-position: center center;
 }
 #paper-button {
   background-image: url(../images/paper-user.png);
-  background-repeat: no-repeat;
-  background-size: 80%;
-  background-position: center center;
 }
 #scissors-button {
   background-image: url(../images/scissors-user.png);
-  background-repeat: no-repeat;
-  background-size: 80%;
-  background-position: center center;
 }
 
-#rock-button:hover,
-#paper-button:hover,
-#scissors-button:hover {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
-  background-size: 85%;
+#rock-button:active,
+#paper-button:active,
+#scissors-button:active {
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
+    -10px -10px 10px white inset;
+  background-size: 75%;
 }
 
 .choices-body {
@@ -85,89 +81,32 @@ li {
   height: 50vh;
 }
 
-.user-selection {
+.user-wrapper,
+.cpu-wrapper {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.selection-static {
+  width: min(500px, 50vw);
+}
+
+.selection-lose {
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
     -10px -10px 10px white inset;
   width: min(500px, 50vw);
   border-radius: 20px;
+  border: 5px solid red;
+  /* transition: box-shadow 1000ms ease-in; */
 }
 
-.comp-selection {
+.selection-win {
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
   width: min(500px, 50vw);
   border-radius: 20px;
-}
-.user-selection-r-win {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-
-.comp-selection-r-win {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-.user-selection-p-win {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-
-.comp-selection-p-win {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-.user-selection-s-win {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-
-.comp-selection-s-win {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-.user-selection-r-lose {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
-    -10px -10px 10px white inset;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-
-.comp-selection-r-lose {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
-    -10px -10px 10px white inset;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-.user-selection-p-lose {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
-    -10px -10px 10px white inset;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-
-.comp-selection-p-lose {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
-    -10px -10px 10px white inset;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-.user-selection-s-lose {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
-    -10px -10px 10px white inset;
-  width: min(500px, 50vw);
-  border-radius: 20px;
-}
-
-.comp-selection-s-lose {
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1) inset,
-    -10px -10px 10px white inset;
-  width: min(500px, 50vw);
-  border-radius: 20px;
+  border: 5px solid rgb(16, 221, 16);
+  /* transition: box-shadow 10ms ease; */
 }
 
 #user-selection-image,

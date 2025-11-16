@@ -5,6 +5,8 @@ var plays = 0;
 var rockBtnEl = document.querySelector('#rock-button');
 var paperBtnEl = document.querySelector('#paper-button');
 var scissorsBtnEl = document.querySelector('#scissors-button');
+var userSelectionEl = document.querySelector('.user-selection');
+var cpuSelectionEl = document.querySelector('.comp-selection');
 var userImgEl = document.querySelector('#user-selection-image');
 var cpuImgEl = document.querySelector('#comp-selection-image');
 var userScoreEl = document.querySelector('#user-score');
@@ -25,6 +27,7 @@ function generateCpuChoice() {
 function recordCpuChoice() {
   if (cpuChoice === 'rock') {
     cpuImg = document.createElement('img');
+    // ? Images don't load in quickly each time, need to find solution - preload each image and change visibility?
     cpuImg.src = 'assets/images/rock-cpu.png';
     cpuImg.alt = 'CPU chose rock';
   } else if (cpuChoice === 'paper') {
@@ -49,13 +52,23 @@ function determineResults() {
     (userChoice === 'scissors' && cpuChoice === 'rock')
   ) {
     cpuWins++;
+    userSelectionEl.setAttribute('class', 'selection-lose');
+    cpuSelectionEl.setAttribute('class', 'selection-win');
   } else if (
     (userChoice === 'paper' && cpuChoice === 'rock') ||
     (userChoice === 'rock' && cpuChoice === 'scissors') ||
     (userChoice === 'scissors' && cpuChoice === 'paper')
   ) {
     userWins++;
-  } else return;
+    userSelectionEl.setAttribute('class', 'selection-win');
+    cpuSelectionEl.setAttribute('class', 'selection-lose');
+  } else {
+    userSelectionEl.setAttribute('class', 'selection-lose');
+    cpuSelectionEl.setAttribute('class', 'selection-lose');
+    userSelectionEl.setAttribute('style', 'border: 5px solid grey');
+    cpuSelectionEl.setAttribute('style', 'border: 5px solid grey');
+    //  TODO: Change border to grey
+  }
 }
 
 // TODO: When clicked - append wins, losses and plays to score board ✅
@@ -77,7 +90,7 @@ function appendUserChoice() {
   userImgEl.append(userImg);
 }
 
-// TODO: When clicked - change style of selection containers
+// TODO: When clicked - change style of selection containers ✅
 // TODO: When clicked - 1 sec visual of both selection containers cycling through the 3 options (FINAL TOUCHES)
 
 rockBtnEl.addEventListener('click', function () {
@@ -104,7 +117,11 @@ rockBtnEl.addEventListener('click', function () {
     rockBtnEl.disabled = false;
     paperBtnEl.disabled = false;
     scissorsBtnEl.disabled = false;
-  }, 1000);
+    userSelectionEl.setAttribute('class', 'selection-static');
+    cpuSelectionEl.setAttribute('class', 'selection-static');
+    userSelectionEl.removeAttribute('style');
+    cpuSelectionEl.removeAttribute('style');
+  }, 2000);
 });
 
 // TODO: Copy logic to these event listeners below ✅
@@ -134,7 +151,11 @@ paperBtnEl.addEventListener('click', function () {
     rockBtnEl.disabled = false;
     paperBtnEl.disabled = false;
     scissorsBtnEl.disabled = false;
-  }, 1000);
+    userSelectionEl.setAttribute('class', 'selection-static');
+    cpuSelectionEl.setAttribute('class', 'selection-static');
+    userSelectionEl.removeAttribute('style');
+    cpuSelectionEl.removeAttribute('style');
+  }, 2000);
 });
 
 scissorsBtnEl.addEventListener('click', function () {
@@ -159,5 +180,9 @@ scissorsBtnEl.addEventListener('click', function () {
     rockBtnEl.disabled = false;
     paperBtnEl.disabled = false;
     scissorsBtnEl.disabled = false;
-  }, 1000);
+    userSelectionEl.setAttribute('class', 'selection-static');
+    cpuSelectionEl.setAttribute('class', 'selection-static');
+    userSelectionEl.removeAttribute('style');
+    cpuSelectionEl.removeAttribute('style');
+  }, 2000);
 });
