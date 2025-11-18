@@ -208,13 +208,7 @@ li {
     background: black;
     left: 110%;
     top: 40%;
-    clip-path: polygon(
-      20% 0%,
-      /* top-right before point */ 100% 0%,
-      /* top-right */ 100% 100%,
-      /* bottom-right */ 20% 100%,
-      /* bottom-right before point */ 0% 50% /* arrow tip on left */
-    );
+    clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 20% 100%, 0% 50%);
   }
 
   .cpu-wrapper {
