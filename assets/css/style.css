@@ -31,7 +31,6 @@ li {
   font-size: 2rem;
 }
 
-/* TODO: FIX: Images shrink faster than their containers */
 .user-buttons {
   display: flex;
   justify-content: space-around;
@@ -40,9 +39,7 @@ li {
   width: min(600px, 100vw);
 }
 
-#rock-button,
-#paper-button,
-#scissors-button {
+.user-buttons button {
   all: unset;
   width: 8rem;
   height: 8rem;
@@ -98,7 +95,6 @@ li {
   width: min(500px, 50vw);
   border-radius: 20px;
   border: 5px solid red;
-  /* transition: box-shadow 1000ms ease-in; */
 }
 
 .selection-win {
@@ -106,7 +102,6 @@ li {
   width: min(500px, 50vw);
   border-radius: 20px;
   border: 5px solid rgb(16, 221, 16);
-  /* transition: box-shadow 10ms ease; */
 }
 
 #user-selection-image,
@@ -128,7 +123,7 @@ li {
   position: relative;
   top: 50px;
   display: flex;
-  gap: 25%;
+  gap: 10%;
   width: min(600px, 100vw);
   justify-content: center;
   height: 20vh;
@@ -137,7 +132,9 @@ li {
 .score-cards ul {
   background: black;
   /* ? Size not changing when above 100px??? */
-  width: 30%;
+  width: 200px;
+  height: 185px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -147,8 +144,18 @@ li {
   box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3), -10px -10px 10px white;
 }
 
-.play-counter-card {
+.score-cards li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.score-cards ul.play-counter-card {
   height: 50%;
+  width: 25%;
 }
 
 .play-counter-card li {
@@ -157,11 +164,110 @@ li {
 
 #computer-score,
 #user-score {
-  font-size: 9rem;
-  position: relative;
+  font-size: 5rem;
+  position: static;
   bottom: 20px;
+  min-width: 4ch;
 }
 
 #plays {
   font-size: 3rem;
+}
+
+@media screen and (max-width: 1100px) {
+  .choices-body {
+    gap: 2%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .user-buttons button {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .choices-body {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 10px;
+  }
+
+  .user-wrapper {
+    position: relative;
+    right: 40%;
+  }
+
+  .user-wrapper::after {
+    content: 'YOU';
+    font-size: 2.5rem;
+    text-align: center;
+    color: white;
+    position: absolute;
+    width: 150px;
+    background: black;
+    left: 110%;
+    top: 40%;
+    clip-path: polygon(
+      20% 0%,
+      /* top-right before point */ 100% 0%,
+      /* top-right */ 100% 100%,
+      /* bottom-right */ 20% 100%,
+      /* bottom-right before point */ 0% 50% /* arrow tip on left */
+    );
+  }
+
+  .cpu-wrapper {
+    position: relative;
+    left: 40%;
+  }
+
+  .cpu-wrapper::after {
+    content: 'CPU';
+    font-size: 2.5rem;
+    text-align: center;
+    color: white;
+    position: absolute;
+    width: 150px;
+    background: black;
+    right: 110%;
+    top: 40%;
+    clip-path: polygon(0% 0%, 80% 0%, 100% 50%, 80% 100%, 0% 100%);
+  }
+
+  .selection-static,
+  .selection-lose,
+  .selection-win {
+    height: 28vh;
+  }
+
+  .score-cards {
+    align-items: flex-end;
+  }
+
+  .score-cards ul {
+    width: 100px;
+    height: 85px;
+  }
+  .score-cards ul.play-counter-card {
+    height: 40%;
+    width: 25%;
+  }
+
+  li {
+    font-size: 1rem;
+  }
+
+  .play-counter-card li {
+    font-size: 1rem;
+  }
+
+  #computer-score,
+  #user-score {
+    font-size: 2rem;
+  }
+
+  #plays {
+    font-size: 1.5rem;
+  }
 }

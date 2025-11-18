@@ -67,7 +67,7 @@ function determineResults() {
     cpuSelectionEl.setAttribute('class', 'selection-lose');
     userSelectionEl.setAttribute('style', 'border: 5px solid grey');
     cpuSelectionEl.setAttribute('style', 'border: 5px solid grey');
-    //  TODO: Change border to grey
+    //  TODO: Change border to grey ✅
   }
 }
 
@@ -119,6 +119,7 @@ rockBtnEl.addEventListener('click', function () {
     scissorsBtnEl.disabled = false;
     userSelectionEl.setAttribute('class', 'selection-static');
     cpuSelectionEl.setAttribute('class', 'selection-static');
+    // Specifically removes the grey border from the recordcpuchoice function
     userSelectionEl.removeAttribute('style');
     cpuSelectionEl.removeAttribute('style');
   }, 2000);
