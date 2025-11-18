@@ -180,7 +180,7 @@ li {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
   .user-buttons button {
     width: 5rem;
     height: 5rem;
