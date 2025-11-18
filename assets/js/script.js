@@ -23,7 +23,6 @@ function generateCpuChoice() {
   return cpuOptions[index];
 }
 
-// TODO: When clicked - add rock image to cpuImgEl ✅
 function recordCpuChoice() {
   if (cpuChoice === 'rock') {
     cpuImg = document.createElement('img');
@@ -67,11 +66,9 @@ function determineResults() {
     cpuSelectionEl.setAttribute('class', 'selection-lose');
     userSelectionEl.setAttribute('style', 'border: 5px solid grey');
     cpuSelectionEl.setAttribute('style', 'border: 5px solid grey');
-    //  TODO: Change border to grey ✅
   }
 }
 
-// TODO: When clicked - append wins, losses and plays to score board ✅
 function appendScore() {
   userWins.toString;
   userScoreEl.textContent = userWins;
@@ -90,7 +87,6 @@ function appendUserChoice() {
   userImgEl.append(userImg);
 }
 
-// TODO: When clicked - change style of selection containers ✅
 // TODO: When clicked - 1 sec visual of both selection containers cycling through the 3 options (FINAL TOUCHES)
 
 rockBtnEl.addEventListener('click', function () {
@@ -124,8 +120,6 @@ rockBtnEl.addEventListener('click', function () {
     cpuSelectionEl.removeAttribute('style');
   }, 2000);
 });
-
-// TODO: Copy logic to these event listeners below ✅
 
 paperBtnEl.addEventListener('click', function () {
   plays++;
